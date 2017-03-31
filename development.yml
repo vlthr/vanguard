@@ -1,0 +1,12 @@
+version: '2'
+services:
+  vanguard:
+      image: vanguard.image
+      ports:
+        - "80:8080"
+      # volumes:
+      #   - ./client:/usr/src/app
+networks:
+  default:
+    external:
+      name: "vanguard-bridge"
