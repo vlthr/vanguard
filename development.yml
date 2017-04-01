@@ -3,9 +3,13 @@ services:
   vanguard:
       image: vanguard.image
       ports:
-        - "80:8080"
-      # volumes:
-      #   - ./client:/usr/src/app
+        - "80:80"
+      links:
+        - cookiefactory:krustykookies
+  cookiefactory:
+      image: cookiefactory.image
+      ports:
+        - "8123:80"
 networks:
   default:
     external:
