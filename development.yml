@@ -3,7 +3,7 @@ services:
   vanguard:
     image: vanguard.image
     volumes:
-      - ./certs:/certs
+      - certs:/certs
     ports:
       - "80:80"
       - "443:443"
@@ -19,7 +19,7 @@ services:
     image: letsencrypt-auto.image
     container_name: letsencrypt-auto
     volumes:
-      - ./certs:/certs
+      - certs:/certs
     restart: always
     environment:
       - DOMAINS=vlthr.io,krustykookies.vlthr.io,cv.vlthr.io
@@ -37,3 +37,5 @@ networks:
   default:
     external:
       name: "vanguard-bridge"
+volumes:
+  certs:
