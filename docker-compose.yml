@@ -8,13 +8,9 @@ services:
       - "80:80"
       - "443:443"
     links:
-      - cookiefactory:krustykookies
+      - put-next-main-site-here:main
       - letsencrypt-auto:letsencrypt-auto
       - rsyslog:rsyslog
-  cookiefactory:
-    image: cookiefactory.image
-    ports:
-      - "8123:80"
   letsencrypt-auto:
     image: letsencrypt-auto.image
     container_name: letsencrypt-auto
@@ -22,7 +18,7 @@ services:
       - certs:/certs
     restart: always
     environment:
-      - DOMAINS=vlthr.io,krustykookies.vlthr.io,cv.vlthr.io
+      - DOMAINS=vlthr.io,blog.vlthr.io,cv.vlthr.io
       - EMAIL=webmaster@vlthr.io
       - CONCAT=true   # Concatenate the cert chain and the private key into a single file (for applications like HAProxy)
       - SEPARATE=false # Do not create separate certs for each domain
